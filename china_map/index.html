@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国地图演示</title>    
+<style>
+    .box {
+        width: 150px;
+        height: 150px;
+        border: solid 1px gray;
+        padding: 5px; 
+        margin: 5px;
+        float: left;
+    }
+</style>
+</head>
+<body>
+  <div id="main">
+    <div style='width:334px;height:330px;float:left;margin:5px;'>
+       <div id="path" style="height:30px; text-align:center;">中国</div>
+       <div id="map" style='height:300px;'></div> 
+    </div> 
+  <div>
+    
+    <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script src="china_map.js?v=2"></script>  
+    <script>
+        ChinaMap.loadMap('map', 'china', true).on('click', function(param){  
+            $("#path").html(ChinaMap.formatPath('map', param.name));
+        });
+        
+        for(var prov in ChinaMap.provinces){
+            $("#main").append("<div id='" + ChinaMap.provinces[prov] + "' class='box'></div>");
+            ChinaMap.loadMap(ChinaMap.provinces[prov], prov);
+        }
+    </script>
+        
+</body>
+</html>
