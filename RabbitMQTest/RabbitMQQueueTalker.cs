@@ -69,7 +69,9 @@ namespace RabbitMQTest
                 _Connection.ConnectionUnblocked += (o, e) => {
                     BuildReceiveChannel();
                 };
-
+                
+                BuildReceiveChannel();
+                
                 return _Connection;
             }
             catch (Exception se)
