@@ -147,6 +147,7 @@ public class RestApiVisitHelper
     // 将查询参数格式化拼接到 url 上形成最终的访问地址
     private String FormatUrl(String apiUrl, Hashtable queryParams)
     {
+        if (queryParams == null) return apiUrl;
         String queryString = "";
         foreach (var k in queryParams.Keys)
         {
